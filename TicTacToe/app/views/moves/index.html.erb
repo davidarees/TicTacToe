@@ -1,0 +1,14 @@
+<table>
+<tr>
+<th>GameId</th>
+<th>Player</th>
+<th>Move</th>
+</tr>
+<% for move in @moves %>
+<tr>
+  <td><%= move.id %></td>
+  <td><%= move.user.username %></td>
+  <td><%= move.move %></td>
+</tr>
+<% end %>
+</table>

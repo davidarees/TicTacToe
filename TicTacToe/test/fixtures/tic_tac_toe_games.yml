@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player1: 1
+  player2: 1
+  number_of_games_won_by_player1: 1
+  number_of_games_won_by_player2: 1
+  number_of_games_drawn: 1
+
+two:
+  player1: 1
+  player2: 1
+  number_of_games_won_by_player1: 1
+  number_of_games_won_by_player2: 1
+  number_of_games_drawn: 1
