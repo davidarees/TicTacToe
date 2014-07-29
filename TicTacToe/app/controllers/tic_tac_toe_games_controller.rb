@@ -4,6 +4,8 @@ class TicTacToeGamesController < ApplicationController
   end
 
   def show
+    @game = TicTacToeGame.find(params[:id])
+    @moves = @game.tic_tac_toe_moves
   end
 
   def new
@@ -11,8 +13,16 @@ class TicTacToeGamesController < ApplicationController
   end
 
   def create
-    binding.pry
-    @game = TicTacToeGame.new(params[:user])
+    @game = TicTacToeGame.new(params[:tic_tac_toe_game])
+    @game.player1_id = current_user.id
+    if @game.save
+        (1..9).each do |x|
+        @game.tic_tac_toe_moves.create(move: x)
+        end
+      redirect_to @game
+    else
+      render 'new'
+    end
   end
 
   def edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140728165818) do
+ActiveRecord::Schema.define(:version => 20140729131215) do
 
   create_table "tic_tac_toe_games", :force => true do |t|
     t.integer  "player1_id"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20140728165818) do
     t.integer  "game_id"
     t.integer  "user_id"
     t.string   "move"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "tic_tac_toe_game_id"
   end
 
   create_table "users", :force => true do |t|

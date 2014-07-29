@@ -1,8 +1,8 @@
 TicTacToe::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  resources :games do
-    resources :moves
+  resources :tic_tac_toe_games do
+    resources :tic_tac_toe_moves
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users

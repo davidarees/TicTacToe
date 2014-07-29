@@ -1,0 +1,34 @@
+<div>
+  Player 1: <br>
+  <%= @game.player1.username %>
+</div>
+<div>
+  Player 2: <br>
+  <%= @game.player2.username %>
+</div>
+<table>
+
+<%= @moves %>
+<% @moves.each do |m| %>
+  <% if m.user_id %>
+  <div class = "<%= m.user_id %>">Cell <%= m.move %> Move Made already by <%= m.user_id %></div>
+  <% else %>
+  <div class="none">Cell <%= m.move %> Move Available <%= link_to "Move", edit_tic_tac_toe_game_tic_tac_toe_move_path(@game, m.id) %></div>
+  <% end %>
+<% end %>
+  <tr>
+    <td id="1"></td>
+    <td id="2"></td>
+    <td id="3"></td>
+  </tr>
+  <tr>
+    <td id="4"></td>
+    <td id="5"></td>
+    <td id="6"></td>
+  </tr>
+  <tr>
+    <td id="7"></td>
+    <td id="8"></td>
+    <td id="9"></td>
+  </tr>
+</table>
