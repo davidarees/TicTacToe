@@ -1,6 +1,6 @@
-u1 = User.create(first_name: "Admin", role: "admin", username: "admin", email: "admin@admin.com")
-u2 = User.create(first_name: "User", role: "user", username: "user", email: "user@user.com")
-u3 = User.create(first_name: "User2", role: "user", username: "user2", email: "user2@user.com")
+u1 = User.create(first_name: "Admin_seed", role: "admin", username: "admin_seed", email: "admin_seed@admin.com")
+u2 = User.create(first_name: "User_seed", role: "user", username: "user_seed", email: "user@user.com")
+u3 = User.create(first_name: "User2_seed", role: "user", username: "user2_seed", email: "user2_seed@user.com")
 
 g1 = TicTacToeGame.create(player1: u1, player2: u2, number_of_games_won_by_player1: 34, number_of_games_won_by_player2: 23,number_of_games_drawn: 400)
 g2 = TicTacToeGame.create(player1: u3, player2: u1, number_of_games_won_by_player1: 22, number_of_games_won_by_player2: 8,number_of_games_drawn: 12)

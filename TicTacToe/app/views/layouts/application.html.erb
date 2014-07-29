@@ -7,13 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if current_user %>
+    <p> hello, <%= current_user.email %> </p>
+    <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: "Are you sure?"} %>
+   <% else %>
+    <%= link_to 'Please login', login_path %>
+    <%= link_to 'Signup', signup_path %>
+   <% end %>
+
   <% flash.each do |name, message| %>
-   <div class="flash-message flash-message-<%= name %>">
+    <div class="flash-message flash-message-<%= name %>">
     <%= message %>
-   </div>
+    </div>
   <% end %>
-  
-<%= yield %>
+
+  <%= yield %>
 
 </body>
 </html>

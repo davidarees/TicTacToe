@@ -4,10 +4,12 @@ TicTacToe::Application.routes.draw do
   resources :games do
     resources :moves
   end
-  resources :sessions only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  get 'login', to: 'sessions#new'
-  root to: "user#index"
+  get '/login', to: 'sessions#new', as: 'login'
+  get '/signup', to: 'users#new', as: 'signup'
+  delete  '/logout', to: 'sessions#destroy', as: 'logout'
+  root to: 'users#index'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
