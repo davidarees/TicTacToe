@@ -9,11 +9,12 @@
 <table>
 
 <%= @moves %>
-<% @moves.each do |m| %>
-  <% if m.user_id %>
-  <div class = "<%= m.user_id %>">Cell <%= m.move %> Move Made already by <%= m.user_id %></div>
+<% (1..9).each do |x| %>
+  <% if @moves.where(move: x.to_s).present? %>
+    <% m = @moves.where(move: x.to_s)[0] %>  
+    <div class = "<%= m.user_id %>">Cell <%= x %> Move Made already by <%= m.user_id %></div>
   <% else %>
-  <div class="none">Cell <%= m.move %> Move Available <%= link_to "Move", edit_tic_tac_toe_game_tic_tac_toe_move_path(@game, m.id) %></div>
+  <div class="none">Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %></div>
   <% end %>
 <% end %>
   <tr>

@@ -16,9 +16,9 @@ class TicTacToeGamesController < ApplicationController
     @game = TicTacToeGame.new(params[:tic_tac_toe_game])
     @game.player1_id = current_user.id
     if @game.save
-        (1..9).each do |x|
-        @game.tic_tac_toe_moves.create(move: x)
-        end
+        # (1..9).each do |x|
+        # @game.tic_tac_toe_moves.create(move: x)
+        # end
       redirect_to @game
     else
       render 'new'
