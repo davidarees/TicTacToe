@@ -5,4 +5,12 @@ class TicTacToeGame < ActiveRecord::Base
   belongs_to :player2, :class_name => "User"
   has_many :tic_tac_toe_moves
 
+  def self.change_user
+      if @current_player = @game.player2.username
+        @current_player = @game.player1.username
+      else
+        @current_player = @game.player2.username
+      end
+  end
+
 end

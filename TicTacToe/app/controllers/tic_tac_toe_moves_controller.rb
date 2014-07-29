@@ -13,7 +13,7 @@ class TicTacToeMovesController < ApplicationController
     #to do - check whether the move is legal (incase someone is hacking!) 
     @game.tic_tac_toe_moves.build(move: params[:move]).save
     # check if winning move
-    check_game
+    #check_game
     redirect_to tic_tac_toe_game_path(@game)    
   end
 
@@ -29,9 +29,4 @@ class TicTacToeMovesController < ApplicationController
 
   def destroy
   end
-
-  def check_game
-    
-  end
-
 end
