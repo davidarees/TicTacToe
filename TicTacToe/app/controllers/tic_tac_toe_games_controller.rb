@@ -6,9 +6,10 @@ class TicTacToeGamesController < ApplicationController
 
   def show
     @game = TicTacToeGame.find(params[:id])
-    @current_player = @game.get_next_player
     @moves = @game.tic_tac_toe_moves
-  end
+    @game.check_game(@moves)
+    @current_player = @game.get_next_player
+      end
 
   def new
     @game = TicTacToeGame.new

@@ -11,8 +11,6 @@ class TicTacToeMovesController < ApplicationController
     @game = TicTacToeGame.find(params[:tic_tac_toe_game_id].to_i)
     #to do - check whether the move is legal (incase someone is hacking!) 
     @game.tic_tac_toe_moves.build(move: params[:move], user_id: current_user.id).save
-    # check if winning move
-    #check_game
     redirect_to tic_tac_toe_game_path(@game)    
   end
 

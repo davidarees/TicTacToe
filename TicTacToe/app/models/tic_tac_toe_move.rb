@@ -3,15 +3,7 @@ class TicTacToeMove < ActiveRecord::Base
   belongs_to :tic_tac_toe_game
   belongs_to :user
 
-  def check_game
-    moves = @game.tic_tac_toe_moves
-    moves.each do |m|
-      
 
-    end
-
-
-  end
 
 
 end

@@ -24,4 +24,19 @@ class TicTacToeGame < ActiveRecord::Base
     end
   end
 
+  def check_game(moves)
+    if moves.count > 4 
+     #set array
+     arr = []
+     (1..9).each  {|a| arr.push('-')}
+     last_played_id = moves.last.user_id
+      moves.each do |m|
+        if m.user_id = last_played_id
+          arr.delete_at(m.move.to_i)
+          arr.insert(m.move.to_i, 1)
+        end
+      end
+    end
+   binding.pry 
+  end
 end
