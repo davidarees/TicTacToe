@@ -8,40 +8,39 @@
   <%= @game.player2.username %>
   (<%= @game.player2_id %>)
 </div>
+<br>
+<div>
+Current Player: <%= @current_player %>
+</div>
+<br>
 <table>
-  Current Player: <%= @current_player %>
-<br />
-
-<%= @moves %>
-<% (1..9).each do |x| %>
-  <% current_move = @moves.where(move: x).first %>
-  <% if current_move %>  
-    <div class= "<%= current_move.user_id %>">
-      Cell <%= x %> Move Made already by <%= current_move.user_id %>
-    </div>
-  <% else %>
-    <div class="none">
-      <% if @game.is_next_to_play? current_user %>
-        Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
-      <% else %>
-        Not your turn
-      <% end %>
-    </div>
+<% (1..9).each do |x| %> 
+  <% if x % 3 == 1 %>
+    <% if x != 0 %>
+      </tr>
+    <% end %>
+    <tr>
   <% end %>
+    <% current_move = @moves.where(move: x).first %>
+    <% if current_move %>
+      <% if current_move.user_id == @game.player1_id %>
+      <td class="Player1">
+        X
+      </td>
+      <% else %>
+      <td class="Player2">
+        O
+      </td>
+      <% end %> 
+    <% else %> 
+      <% if @game.is_next_to_play? current_user %>
+        <td class="Available"><%= link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+        </td>
+      <% else %>
+          <td class="Available">Not Available
+          </td>
+      <% end %>
+    <% end %>
+
 <% end %>
-  <tr>
-    <td id="1"></td>
-    <td id="2"></td>
-    <td id="3"></td>
-  </tr>
-  <tr>
-    <td id="4"></td>
-    <td id="5"></td>
-    <td id="6"></td>
-  </tr>
-  <tr>
-    <td id="7"></td>
-    <td id="8"></td>
-    <td id="9"></td>
-  </tr>
 </table>
