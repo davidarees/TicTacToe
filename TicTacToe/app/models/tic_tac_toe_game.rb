@@ -5,12 +5,23 @@ class TicTacToeGame < ActiveRecord::Base
   belongs_to :player2, :class_name => "User"
   has_many :tic_tac_toe_moves
 
-  def self.change_user
-      if @current_player = @game.player2.username
-        @current_player = @game.player1.username
-      else
-        @current_player = @game.player2.username
-      end
+  def is_next_to_play? user
+    return player1_id if tic_tac_toe_moves.empty?
+    #i.e. not the last mover!
+    !(tic_tac_toe_moves.last.user_id  == user.id)
+  end
+
+  def get_next_player
+    moves = self.tic_tac_toe_moves
+    return player1_id if moves.empty?
+    last_played_id = moves.last.user_id
+    #following line will output in the array the one which doesn't match last_played_id
+    next_player_id = ([self.player1_id, self.player2_id] - [last_played_id]).first 
+    if next_player_id = player1_id
+      self.player1.username
+    else
+      self.player2.username
+    end
   end
 
 end

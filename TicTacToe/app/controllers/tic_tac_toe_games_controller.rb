@@ -6,11 +6,7 @@ class TicTacToeGamesController < ApplicationController
 
   def show
     @game = TicTacToeGame.find(params[:id])
-    if @current_player
-      TicTacToeGame.change_user
-    else
-      @current_player = current_user.username
-    end
+    @current_player = @game.get_next_player
     @moves = @game.tic_tac_toe_moves
   end
 
@@ -21,7 +17,6 @@ class TicTacToeGamesController < ApplicationController
   def create
     @game = TicTacToeGame.new(params[:tic_tac_toe_game])
     @game.player1_id = current_user.id
-
     if @game.save
       redirect_to @game
     else

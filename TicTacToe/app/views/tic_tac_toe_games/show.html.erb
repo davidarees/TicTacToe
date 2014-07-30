@@ -1,10 +1,12 @@
 <div>
   Player 1: <br>
   <%= @game.player1.username %>
+  (<%= @game.player1_id %>)
 </div>
 <div>
   Player 2: <br>
   <%= @game.player2.username %>
+  (<%= @game.player2_id %>)
 </div>
 <table>
   Current Player: <%= @current_player %>
@@ -12,14 +14,18 @@
 
 <%= @moves %>
 <% (1..9).each do |x| %>
-  <% if @moves.where(move: x.to_s).present? %>
-    <% m = @moves.where(move: x.to_s)[0] %>  
-    <div class= "<%= m.user_id %>">
-      Cell <%= x %> Move Made already by <%= m.user_id %>
+  <% current_move = @moves.where(move: x).first %>
+  <% if current_move %>  
+    <div class= "<%= current_move.user_id %>">
+      Cell <%= x %> Move Made already by <%= current_move.user_id %>
     </div>
   <% else %>
   <div class="none">
-    Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+    <% if @game.is_next_to_play? current_user %>
+      Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+    <% else %>
+      Not your turn
+    <% end %>
   </div>
   <% end %>
 <% end %>
