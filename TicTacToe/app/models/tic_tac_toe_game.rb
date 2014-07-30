@@ -17,7 +17,7 @@ class TicTacToeGame < ActiveRecord::Base
     last_played_id = moves.last.user_id
     #following line will output in the array the one which doesn't match last_played_id
     next_player_id = ([self.player1_id, self.player2_id] - [last_played_id]).first 
-    if next_player_id = player1_id
+    if next_player_id == player1_id
       self.player1.username
     else
       self.player2.username
