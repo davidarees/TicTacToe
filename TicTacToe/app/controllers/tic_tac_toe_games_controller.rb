@@ -9,6 +9,7 @@ class TicTacToeGamesController < ApplicationController
     @moves = @game.tic_tac_toe_moves
     @game.check_game(@moves)
     @current_player = @game.get_next_player
+    redirect_to @game, notice: 
       end
 
   def new

@@ -31,12 +31,31 @@ class TicTacToeGame < ActiveRecord::Base
      (1..9).each  {|a| arr.push('-')}
      last_played_id = moves.last.user_id
       moves.each do |m|
-        if m.user_id = last_played_id
+        if m.user_id == last_played_id
           arr.delete_at(m.move.to_i)
-          arr.insert(m.move.to_i, 1)
+          arr.insert((m.move.to_i)-1, 1)
         end
+        binding.pry
       end
-    end
-   binding.pry 
+      #check_if_game_complete
+      #create an array to compare against
+
+      winning_position = [1,1,1]
+
+      if  winning_position == arr.values_at(0,3,6) ||
+          winning_position == arr.values_at(1,4,7) ||
+          winning_position == arr.values_at(2,5,8) ||
+          winning_position == arr.values_at(0,1,2) ||
+          winning_position == arr.values_at(3,4,5) ||
+          winning_position == arr.values_at(6,7,8) ||
+          winning_position == arr.values_at(0,4,8) ||
+          winning_position == arr.values_at(2,4,6)
+          
+      end
+
+  end
+
+  def set_default_empty_array
+    
   end
 end
