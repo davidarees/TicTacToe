@@ -20,13 +20,13 @@
       Cell <%= x %> Move Made already by <%= current_move.user_id %>
     </div>
   <% else %>
-  <div class="none">
-    <% if @game.is_next_to_play? current_user %>
-      Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
-    <% else %>
-      Not your turn
-    <% end %>
-  </div>
+    <div class="none">
+      <% if @game.is_next_to_play? current_user %>
+        Cell <%= x %> Move Available <%= link_to "Move", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+      <% else %>
+        Not your turn
+      <% end %>
+    </div>
   <% end %>
 <% end %>
   <tr>

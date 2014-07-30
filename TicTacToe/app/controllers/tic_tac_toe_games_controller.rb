@@ -7,10 +7,12 @@ class TicTacToeGamesController < ApplicationController
   def show
     @game = TicTacToeGame.find(params[:id])
     @moves = @game.tic_tac_toe_moves
-    @game.check_game(@moves)
+    if @game.check_game(@moves)
+
+      flash[:notice] = 'Game Over'
+    end
     @current_player = @game.get_next_player
-    redirect_to @game, notice: 
-      end
+  end
 
   def new
     @game = TicTacToeGame.new
