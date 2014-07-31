@@ -16,6 +16,10 @@ class TicTacToeGame < ActiveRecord::Base
     player1_id = :p1_id AND player2_id = :p2_id) OR (
     player2_id = :p1_id AND player1_id = :p2_id)) AND (winner_id = :p1_id AND game_complete = 't')", {p1_id: p1.id, p2_id: p2.id})}
 
+  scope :player_games_against_player_drawn, -> (p1, p2) {where("((
+    player1_id = :p1_id AND player2_id = :p2_id) OR (
+    player2_id = :p1_id AND player1_id = :p2_id)) AND (winner_id = 0 AND game_complete = 't')", {p1_id: p1.id, p2_id: p2.id})}
+
   # def self.all_for_current_user(user_id)
   #   binding.pry
   #   all conditions:  [user.id == user.game.player1]
