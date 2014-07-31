@@ -2,10 +2,13 @@ class UsersController  < ApplicationController
   def index
     @users=User.all
   end
-
+  def leaderboard
+    @leaders = TicTacToeGame.where(game_complete: true).group(winner_id)
+  end
   def show
     @user = User.find(params[:id])
-    @games = TicTacToeGame.unfinished_games(@user)
+    @games_unfinished = TicTacToeGame.unfinished_games(@user)
+    @games_finished = TicTacToeGame.finished_games(@user).limit(10)
   end
 
   def new

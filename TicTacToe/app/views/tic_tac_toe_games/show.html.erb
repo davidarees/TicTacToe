@@ -26,10 +26,6 @@ Head to Head
       <%= TicTacToeGame.player1_games_against_player2_won(@game.player2, @game.player1).count %></td>
   </tr>
 </table>
-Not Complete: <%= TicTacToeGame.not_completed.count %><br>
-Completed: <%= TicTacToeGame.completed.count %><br>
-Current User games: <%= TicTacToeGame.for_user(current_user).count %><br>
-
 </div>
 <div>
 Current Player: <%= @current_player %>

@@ -1,17 +1,40 @@
 <h1>Current Games</h1>
-Current Unfinished Games: <%= @games.count %><br>
+Current Unfinished Games: <%= @games_unfinished.count %><br>
 <table>
   <tr>
     <th>Game</th>
   <th>Player 1</th>
   <th>Player 2</th>
   </tr>
-  <%= @games.each do |g| %>
+    <% @games_unfinished.each do |g| %>
+      <tr>
+      <td><%= g.id %></td> 
+      <td><%= g.player1.full_name %></td>
+      <td><%= g.player2.full_name %></td>
+      <td><%= link_to "Play", tic_tac_toe_game_path(g.id) %></td>
+      </tr>
+    <% end %>
+</table>
+
+Last 10 finished Games:<br>
+<table>
+  <tr>
+    <th>Game</th>
+  <th>Player 1</th>
+  <th>Player 2</th>
+  <th>Winner</th>
+  </tr>
+  <% @games_finished.each do |g| %>
     <tr>
     <td><%= g.id %></td> 
     <td><%= g.player1.full_name %></td>
     <td><%= g.player2.full_name %></td>
-    <td><%= link_to "Play", tic_tac_toe_game_path(g.id) %></td>
+    <td><% if g.winner_id == 0 %>
+      Draw 
+      <% else %>
+        <%= g.winner.full_name %>
+      <% end %></td>
+    <td><%= link_to "Show", tic_tac_toe_game_path(g.id) %></td>
     </tr>
   <% end %>
 </table>

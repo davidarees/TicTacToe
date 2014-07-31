@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>World of Tic-Tac-Toe</header>  
+  <nav>
   <% if current_user %>
     <p> hello, <%= current_user.email %> </p>
     <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: "Are you sure?"} %>
@@ -16,7 +18,7 @@
   <% end %>
   
   <%= link_to 'New Game', new_tic_tac_toe_game_path %>
-
+  </nav>
   <% flash.each do |name, message| %>
     <div class="flash-message flash-message-<%= name %>">
     <%= message %>
