@@ -11,37 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729131215) do
+ActiveRecord::Schema.define(:version => 20140728142348) do
 
   create_table "tic_tac_toe_games", :force => true do |t|
     t.integer  "player1_id"
     t.integer  "player2_id"
-    t.integer  "number_of_games_won_by_player1"
-    t.integer  "number_of_games_won_by_player2"
-    t.integer  "number_of_games_drawn"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "game_complete", :default => false
+    t.integer  "winner_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "tic_tac_toe_moves", :force => true do |t|
-    t.integer  "game_id"
+    t.integer  "tic_tac_toe_game_id"
     t.integer  "user_id"
     t.string   "move"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "tic_tac_toe_game_id"
   end
 
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "email"
     t.string   "password_digest"
     t.text     "image"
     t.string   "role"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "email"
   end
 
 end

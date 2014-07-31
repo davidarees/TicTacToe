@@ -3,9 +3,8 @@ class CreateTicTacToeGames < ActiveRecord::Migration
     create_table :tic_tac_toe_games do |t|
       t.integer :player1_id
       t.integer :player2_id
-      t.integer :number_of_games_won_by_player1
-      t.integer :number_of_games_won_by_player2
-      t.integer :number_of_games_drawn
+      t.boolean :game_complete, :default => false 
+      t.integer :winner_id
 
       t.timestamps
     end
