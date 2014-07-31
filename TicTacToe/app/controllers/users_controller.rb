@@ -5,6 +5,7 @@ class UsersController  < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @games = TicTacToeGame.unfinished_games(@user)
   end
 
   def new

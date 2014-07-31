@@ -1,5 +1,23 @@
+<h1>Current Games</h1>
+Current Unfinished Games: <%= @games.count %><br>
+<table>
+  <tr>
+    <th>Game</th>
+  <th>Player 1</th>
+  <th>Player 2</th>
+  </tr>
+  <%= @games.each do |g| %>
+    <tr>
+    <td><%= g.id %></td> 
+    <td><%= g.player1.full_name %></td>
+    <td><%= g.player2.full_name %></td>
+    <td><%= link_to "Play", tic_tac_toe_game_path(g.id) %></td>
+    </tr>
+  <% end %>
+</table>
 <h1>User Information</h1>
 <div><p>First Name: </p><%= @user.first_name %></div><br>
 <div><p>Last Name: </p><%= @user.last_name %></div><br>
 <div><p>Username: </p><%= @user.username %></div><br>
 <div><p>E-mail: </p><%= @user.email %></div><br>
+
