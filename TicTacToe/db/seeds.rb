@@ -3,9 +3,9 @@ u2 = User.create(first_name: "Admin", role: "admin", username: "Admin", email: "
 u3 = User.create(first_name: "User_seed", role: "user", username: "user_seed", email: "user@user.com", password: "password", password_confirmation: "password")
 u4 = User.create(first_name: "User2_seed", role: "user", username: "user2_seed", email: "user2_seed@user.com", password: "password", password_confirmation: "password")
 
-g1 = TicTacToeGame.create(player1_id: u1, player2_id: u2, game_complete: true, winner_id: 0)
-g2 = TicTacToeGame.create(player1_id: u3, player2_id: u1)
-g3 = TicTacToeGame.create(player1_id: u2, player2_id: u1, game_complete: true, winner_id: 2)
+g1 = TicTacToeGame.create(player1: u1, player2: u2, game_complete: true, winner_id: 0)
+g2 = TicTacToeGame.create(player1: u3, player2: u1)
+g3 = TicTacToeGame.create(player1: u2, player2: u1, game_complete: true, winner_id: 2)
 
 m1 = TicTacToeMove.create(tic_tac_toe_game_id: g1.id, user_id: u1.id, move: "3")
 m2 = TicTacToeMove.create(tic_tac_toe_game_id: g1.id, user_id: u2.id, move: "2")

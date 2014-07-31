@@ -3,18 +3,16 @@
 <th>GameId</th>
 <th>Player 1</th>
 <th>Player 2</th>
-<th>Wins for Player 1</th>
-<th>Wins for Player 2</th>
-<th>Tied</th>
+<th>Complete</th>
+<th>Winner</th>
 </tr>
 <% for game in @games %>
 <tr>
   <td><%= game.id %></td>
   <td><%= game.player1.username %></td>
   <td><%= game.player2.username %></td>
-  <td><%= game.number_of_games_won_by_player1 %></td>
-  <td><%= game.number_of_games_won_by_player2 %></td>
-  <td><%= game.number_of_games_drawn %></td>
+  <td><%= game.game_complete %></td>
+  <td><%= game.winner_id %></td>
 </tr>
 <% end %>
 </table>
