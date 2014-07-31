@@ -1,37 +1,19 @@
 <div>
+  <div class="players">
   Player 1: <br>
   <%= @game.player1.username %>
-  (<%= @game.player1_id %>)
-</div>
-<div>
+  </div>
+  <div class="players">
   Player 2: <br>
   <%= @game.player2.username %>
-  (<%= @game.player2_id %>)
+  </div>
 </div>
-<br>
-<div id="head_to_head">
-Head to Head
-<table>
-  <tr>
-    <th>Player 1</th>
-    <th>Drawn</th>
-    <th>Player 2</th>
-  </tr>
-  <tr>
-    <td>
-      <%= TicTacToeGame.player1_games_against_player2_won(@game.player1, @game.player2).count %></td>
-    <td>
-      <%= TicTacToeGame.player_games_against_player_drawn(@game.player2, @game.player1).count %></td>
-    <td>
-      <%= TicTacToeGame.player1_games_against_player2_won(@game.player2, @game.player1).count %></td>
-  </tr>
-</table>
-</div>
+
 <div>
 Current Player: <%= @current_player %>
 </div>
 <br>
-<table>
+<table class="game">
 <% (1..9).each do |x| %> 
   <% if x % 3 == 1 %>
     <% if x != 0 %>
@@ -62,3 +44,22 @@ Current Player: <%= @current_player %>
 
 <% end %>
 </table>
+
+<div id="head_to_head">
+Head to Head
+<table>
+  <tr>
+    <th>Player 1</th>
+    <th>Drawn</th>
+    <th>Player 2</th>
+  </tr>
+  <tr>
+    <td>
+      <%= TicTacToeGame.player1_games_against_player2_won(@game.player1, @game.player2).count %></td>
+    <td>
+      <%= TicTacToeGame.player_games_against_player_drawn(@game.player2, @game.player1).count %></td>
+    <td>
+      <%= TicTacToeGame.player1_games_against_player2_won(@game.player2, @game.player1).count %></td>
+  </tr>
+</table>
+</div>

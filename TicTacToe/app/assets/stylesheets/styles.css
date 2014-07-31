@@ -2,11 +2,12 @@
 
 header {
   height: 100px;
+  border-radius: 10px;
+  border: 5px solid black;
 }
 
 body {
-
-  font-style: sans-serif;
+  font-family: 'Press Start 2P', cursive;
   font-size: 20px;
   width: 940px;
   background-color: white;
@@ -15,18 +16,73 @@ body {
 }
 
 nav {
-  margin-bottom: 10px;
-  border-bottom: 2px solid black;
+
+  border-bottom: 5px solid black;
+  text-align: right;
+
 }
 
-article {
+nav ul {
+  text-align: right;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+#left {
+  float: left;
+}
+
+.players {
+  width: 50%;
+  float: left;
+  text-align: center;
+  padding: 15px;
+}
+
+#head_to_head {
+  margin-top: 20px;
+  height: 80px;
+  padding: 10px;
+  text-align: center;
+}
+
+table {
   width: 100%;
-  border-bottom: 2px solid black;
-  margin-bottom: 5px;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;  
+  border-color: black; 
+  padding: 5px;
+}
+
+
+td {
+  text-align: center;
+}
+
+
+.game {
+  border: 5px solid black;
+  width: 940px;
+}
+
+.game td {
+  height: 100px;
+  width: 100px;
+}
+
+.available {
+  background-color: black;
+  padding: 0px;
+}
+
+header div {
+  padding: 20px;
 }
 
 h1 {
-  font-family: 'Pacifico', cursive;
+
   font-size: 40px;
   text-align: center;
   margin: 20px 0 50px;
@@ -34,7 +90,7 @@ h1 {
 
 h2 {
   font-size: 20px;
-  font-family: 'Pacifico', cursive;
+
 }
 
 ul {
@@ -43,7 +99,6 @@ ul {
 
 li{
   display: inline-block;
-/*  height: 60px;*/
 }
 
 li a {
@@ -73,10 +128,10 @@ article a {
 p {
   margin-bottom: 3px;
 }
-
+/*
 td {
   padding: 15px;
-}
+}*/
 
 input {
   height: 30px;
@@ -99,6 +154,13 @@ button {
     padding: 5px;
     display: block;
   }
+}
+
+td a {
+  border: 1px solid black;
+  color: white;
+
+  padding: 50px;
 }
 
 /*td {
