@@ -10,17 +10,19 @@
   <% if current_user %>
     <p> hello, <%= current_user.email %> </p>
     <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: "Are you sure?"} %>
-   <% else %>
+  <% else %>
     <%= link_to 'Please login', login_path %>
     <%= link_to 'Signup', signup_path %>
-   <% end %>
+  <% end %>
+  
+  <%= link_to 'New Game', new_tic_tac_toe_game_path %>
 
   <% flash.each do |name, message| %>
     <div class="flash-message flash-message-<%= name %>">
     <%= message %>
     </div>
   <% end %>
-<%= link_to 'New Game', new_tic_tac_toe_game_path %>
+
   <%= yield %>
 
 </body>

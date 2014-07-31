@@ -20,12 +20,6 @@ class TicTacToeGame < ActiveRecord::Base
     player1_id = :p1_id AND player2_id = :p2_id) OR (
     player2_id = :p1_id AND player1_id = :p2_id)) AND (winner_id = 0 AND game_complete = 't')", {p1_id: p1.id, p2_id: p2.id})}
 
-  # def self.all_for_current_user(user_id)
-  #   binding.pry
-  #   all conditions:  [user.id == user.game.player1]
-  # end
-
-
   def is_next_to_play? user
     return player1_id if tic_tac_toe_moves.empty?
     #i.e. not the last mover!
@@ -58,19 +52,28 @@ class TicTacToeGame < ActiveRecord::Base
         end
       end
     
-    #check_if_game_complete
-    #create an array to compare against
-    winning_position = [1,1,1]
+      #create an array to compare against
+      winning_position = [1,1,1]
 
-        winning_position == arr.values_at(0,3,6) ||
-        winning_position == arr.values_at(1,4,7) ||
-        winning_position == arr.values_at(2,5,8) ||
-        winning_position == arr.values_at(0,1,2) ||
-        winning_position == arr.values_at(3,4,5) ||
-        winning_position == arr.values_at(6,7,8) ||
-        winning_position == arr.values_at(0,4,8) ||
-        winning_position == arr.values_at(2,4,6)
-
+      winning_position == arr.values_at(0,3,6) ||
+      winning_position == arr.values_at(1,4,7) ||
+      winning_position == arr.values_at(2,5,8) ||
+      winning_position == arr.values_at(0,1,2) ||
+      winning_position == arr.values_at(3,4,5) ||
+      winning_position == arr.values_at(6,7,8) ||
+      winning_position == arr.values_at(0,4,8) ||
+      winning_position == arr.values_at(2,4,6)
     end
+  end
+
+  def check_draw
+     tic_tac_toe_moves.count == 9
+  end
+
+  def put_game_result_in_table
+    moves = self.tic_tac_toe_moves
+    self.winner_id = moves.last.user_id
+    self.game_complete = true
+    self.save
   end
 end
