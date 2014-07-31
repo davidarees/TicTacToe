@@ -62,7 +62,7 @@ Current Player: <%= @current_player %>
       </td>
       <% end %> 
     <% else %> 
-      <% if @game.is_next_to_play? current_user %>
+      <% if (!@game.game_complete) && (@game.is_next_to_play? current_user) %>
         <td class="Available"><%= link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
         </td>
       <% else %>

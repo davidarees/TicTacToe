@@ -8,9 +8,8 @@ class TicTacToeGamesController < ApplicationController
     @game = TicTacToeGame.find(params[:id])
     @moves = @game.tic_tac_toe_moves
     if @game.check_game(@moves)
-      flash[:notice] = '#{@game.tic_tac_toe_moves.last.user_id.full_name} WINS'
-      binding.pry
       @game.put_game_result_in_table
+      flash[:notice] = "#{@game.winner.full_name} WINS"
     elsif @game.check_draw
       flash[:notice] = 'DRAW'
     end

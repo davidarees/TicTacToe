@@ -1,8 +1,9 @@
 class TicTacToeGame < ActiveRecord::Base
-  attr_accessible :player1_id, :player2_id, :game_complete, :winner_id, :player1, :player2
+  attr_accessible :player1_id, :player2_id, :game_complete, :winner_id, :player1, :player2, :winner
 
   belongs_to :player1, :class_name => "User"
   belongs_to :player2, :class_name => "User"
+  belongs_to :winner, :class_name => "User"
   has_many :tic_tac_toe_moves
 
   scope :not_completed, where(game_complete: false)
