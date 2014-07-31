@@ -5,6 +5,20 @@ class TicTacToeGame < ActiveRecord::Base
   belongs_to :player2, :class_name => "User"
   has_many :tic_tac_toe_moves
 
+  scope :not_completed, where(game_complete: false)
+  scope :completed, where(game_complete: true)
+  scope :for_user, -> (user) {where("player1_id = :user_id OR player2_id = :user_id", {user_id: user.id})}
+  scope :unfinished_games, -> (user) {where("(player1_id = :user_id OR player2_id = :user_id) AND game_complete = 'f'", {user_id: user.id})}
+  scope :for_games_against_eachother, -> (p1, p2) {where("(
+    player1_id = :p2_id AND player2_id = :p1_id) OR (
+    player2_id = :p2_id AND player1_id = :p1_id)", {p1_id: p1.id, p2_id: p2.id})}
+
+  # def self.all_for_current_user(user_id)
+  #   binding.pry
+  #   all conditions:  [user.id == user.game.player1]
+  # end
+
+
   def is_next_to_play? user
     return player1_id if tic_tac_toe_moves.empty?
     #i.e. not the last mover!
