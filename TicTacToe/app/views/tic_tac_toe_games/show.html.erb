@@ -26,10 +26,12 @@ Head to Head
 Not Complete: <%= TicTacToeGame.not_completed.count %><br>
 Completed: <%= TicTacToeGame.completed.count %><br>
 Current User games: <%= TicTacToeGame.for_user(current_user).count %><br>
-<% binding.pry %>
 Player1 games: <%= TicTacToeGame.for_user(@game.player1).count %><br>
 Player2 games: <%= TicTacToeGame.for_user(@game.player2).count %><br>
-Player1 games against Player2<%= TicTacToeGame.for_games_against_eachother(@game.player2, @game.player1).count %><br>
+Player1 games against Player2<%= TicTacToeGame.for_games_against_eachother(@game.player1, @game.player2).count %><br>
+Player1 wins against Player2<%= TicTacToeGame.player1_games_against_player2_won(@game.player1, @game.player2).count %><br>
+Player2 wins against Player1<%= TicTacToeGame.player1_games_against_player2_won(@game.player2, @game.player1).count %><br>
+
 Unfinished for current user: <%= TicTacToeGame.unfinished_games(current_user).count %>
 
 
