@@ -117,34 +117,15 @@ a{
   display: block;
 }
 
-article a {
- text-decoration: none; 
- display: inline-block;
- border: 5px solid black;
- color: white;
- margin-bottom: 5px;
-}
-
 p {
   margin-bottom: 3px;
 }
-/*
-td {
-  padding: 15px;
-}*/
 
 input {
   height: 30px;
   width:  200px;
   font-size: 18px;
 }
-
-textarea {
-  height: 60px;
-  width: 400px;
-  font-size: 18px;
-}
-
 
 button {
   a{
@@ -162,11 +143,3 @@ td a {
 
   padding: 50px;
 }
-
-/*td {
-  height: 100px;
-  width: 100px;
-  border: 5px solid black;
-  text-align: center;
-  font-size: 25px;
-}*/

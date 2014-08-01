@@ -1,9 +1,10 @@
 class UsersController  < ApplicationController
   def index
     @users=User.all
+    @leaders = TicTacToeGame.group(:winner_id).count
   end
   def leaderboard
-    @leaders = TicTacToeGame.where(game_complete: true).group(winner_id)
+    
   end
   def show
     @user = User.find(params[:id])
@@ -18,7 +19,7 @@ class UsersController  < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path
+      redirect_to new_session_path
     else
       render 'new'
     end

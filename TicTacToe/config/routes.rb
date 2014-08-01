@@ -6,7 +6,6 @@ TicTacToe::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  #get '/leaderboard', to: 'users#leaderboard'
   get '/login', to: 'sessions#new', as: 'login'
   get '/signup', to: 'users#new', as: 'signup'
   delete  '/logout', to: 'sessions#destroy', as: 'logout'
