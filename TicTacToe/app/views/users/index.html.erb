@@ -2,26 +2,15 @@
 
 <table>
   <tr>
-    <th>Username</th>
-    <th>Number of Wins</th>
-  </tr>
-  <tr>
-    <td>WOPR</td>
-    <td>99999</td>
-  <tr>
-    <td>Hal</td>
-    <td>14590</td>
-  </tr>
-  <tr>
-    <td>Tennis_Shoes</td>
-    <td>1333</td>
-  </tr>
-  <tr>
-    <td>HER</td>
-    <td>898</td>
-  </tr>
-  <tr>
-    <td>Devil666</td>
-    <td>666</td>
-  </tr>
+   <th>Username</th>
+   <th>Wins</th>
+   </tr>
+   <% @leaderboard.each do |k, v| %>
+      <% if k > 0 %>
+      <tr> 
+        <td><%= k %></td>
+        <td><%= v %></td>
+      </tr>
+      <% end %>
+   <% end %>
 </table>

@@ -1,8 +1,8 @@
 class UsersController  < ApplicationController
   def index
     @users=User.all
-    @leaders = TicTacToeGame.group(:winner_id).count
-  end
+    @leaderboard =  TicTacToeGame.where(game_complete: true).group('winner_id').count
+  end 
   def leaderboard
     
   end
@@ -26,10 +26,16 @@ class UsersController  < ApplicationController
   end
 
   def edit
-    
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to @user, :notice  => "Successfully updated user."
+    else
+      render :action => 'edit'
+    end
   end
 
   def destroy

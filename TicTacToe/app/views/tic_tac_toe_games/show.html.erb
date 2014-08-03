@@ -21,7 +21,7 @@ Current Player: <%= @current_player %>
     <% end %>
     <tr>
   <% end %>
-    <% current_move = @moves.where(move: x).first %>
+    <% current_move = @moves.where(move: x.to_s).first %>
     <% if current_move %>
       <% if current_move.user_id == @game.player1_id %>
       <td class="Player1">

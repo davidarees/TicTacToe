@@ -12,21 +12,15 @@ body {
   width: 940px;
   background-color: white;
   margin: 0 auto;
-
 }
 
 nav {
-
   border-bottom: 5px solid black;
-  text-align: right;
-
-}
-
-nav ul {
   text-align: right;
 }
 
 nav ul li {
+  text-align: right;
   display: inline-block;
 }
 
@@ -56,11 +50,9 @@ table {
   padding: 5px;
 }
 
-
 td {
   text-align: center;
 }
-
 
 .game {
   border: 5px solid black;
@@ -82,7 +74,6 @@ header div {
 }
 
 h1 {
-
   font-size: 40px;
   text-align: center;
   margin: 20px 0 50px;
@@ -90,31 +81,24 @@ h1 {
 
 h2 {
   font-size: 20px;
-
 }
 
 ul {
   padding-bottom: 5px;
 }
 
-li{
+li {
   display: inline-block;
 }
 
-li a {
-  border: 1px solid black;
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  padding: 15px;
-}
-
-a{
+a {
   text-decoration: none;
   background-color: black;
-  font-size: 15px;
-  padding: 5px;
+  font-size: 20px;
+  padding: 15px;
   display: block;
+  color: white;
+  border: 1px solid black;
 }
 
 p {
@@ -127,19 +111,8 @@ input {
   font-size: 18px;
 }
 
-button {
-  a{
-    text-decoration: none;
-    background-color: black;
-    font-size: 15px;
-    padding: 5px;
-    display: block;
-  }
-}
-
 td a {
   border: 1px solid black;
   color: white;
-
   padding: 50px;
 }
