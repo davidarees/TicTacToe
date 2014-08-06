@@ -51,6 +51,7 @@ table {
 }
 
 td {
+
   text-align: center;
 }
 
@@ -60,8 +61,10 @@ td {
 }
 
 .game td {
-  height: 100px;
-  width: 100px;
+  background-position: center;
+  height: 300px;
+  width: 300px;
+  border: 2px solid black;
 }
 
 .available {
@@ -115,4 +118,16 @@ td a {
   border: 1px solid black;
   color: white;
   padding: 50px;
+}
+
+.player1 {
+  background-image: url('ex-256.png');
+  background-repeat: none;
+  background-position: center;
+}
+
+.player2 {
+  background-image: url('circle.png');
+  background-repeat: none;
+  background-position: center;
 }

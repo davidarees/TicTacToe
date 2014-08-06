@@ -10,7 +10,19 @@
 </div>
 
 <div>
-Current Player: <%= @current_player %>
+Current Player: <%= @current_player %> <br>
+Please place your counter on the board:
+<% if @current_player == @game.player1 %>
+
+  <div class="draggable ui-widget-content drop-image" style="width: 300px;">
+  <p><%= image_tag "ex-256.png" %></p>
+  </div>
+<% else %>
+
+  <div class="draggable ui-widget-content drop-image" style="width: 300px;">
+  <p><%= image_tag "circle.png" %></p>
+    </div>
+<% end %>
 </div>
 <br>
 <table class="game">
@@ -24,17 +36,19 @@ Current Player: <%= @current_player %>
     <% current_move = @moves.where(move: x.to_s).first %>
     <% if current_move %>
       <% if current_move.user_id == @game.player1_id %>
-      <td class="Player1">
+      <td class="player1">
         X
       </td>
       <% else %>
-      <td class="Player2">
+      <td class="player2">
         O
       </td>
       <% end %> 
     <% else %> 
       <% if (!@game.game_complete) && (@game.is_next_to_play? current_user) %>
-        <td class="Available"><%= link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+        <td><div id="droppable" class="ui-widget-header"><p>Drop Here</p>
+           <%# link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
+        </div>
         </td>
       <% else %>
           <td class="Available">Not Available
