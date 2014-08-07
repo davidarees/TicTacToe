@@ -122,12 +122,13 @@ td a {
 
 .player1 {
   background-image: url('ex-256.png');
-  background-repeat: none;
-  background-position: center;
 }
 
 .player2 {
   background-image: url('circle.png');
-  background-repeat: none;
-  background-position: center;
+}
+
+.draggable {
+  height: 256px;
+  width: 256px;
 }

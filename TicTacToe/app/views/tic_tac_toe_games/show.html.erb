@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  window.gameId = <%= @game.id %>
+</script>
+<%= link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: 5) %>
 <div>
   <div class="players">
   Player 1: <br>
@@ -12,14 +16,12 @@
 <div>
 Current Player: <%= @current_player %> <br>
 Please place your counter on the board:
-<% if @current_player == @game.player1 %>
-
-  <div class="draggable ui-widget-content drop-image" style="width: 300px;">
+<% if @current_player == @game.player1.username && @current_player == current_user.username %>
+  <div class="draggable ui-widget-content drop-image">
   <p><%= image_tag "ex-256.png" %></p>
   </div>
-<% else %>
-
-  <div class="draggable ui-widget-content drop-image" style="width: 300px;">
+<% elsif @current_player == @game.player2.username && @current_player == current_user.username %>
+  <div class="draggable ui-widget-content drop-image">
   <p><%= image_tag "circle.png" %></p>
     </div>
 <% end %>
@@ -37,21 +39,19 @@ Please place your counter on the board:
     <% if current_move %>
       <% if current_move.user_id == @game.player1_id %>
       <td class="player1">
-        X
       </td>
       <% else %>
       <td class="player2">
-        O
       </td>
       <% end %> 
     <% else %> 
       <% if (!@game.game_complete) && (@game.is_next_to_play? current_user) %>
-        <td><div id="droppable" class="ui-widget-header"><p>Drop Here</p>
+        <td><div class="droppable ui-widget-header" data-cell="<%= x %>"><p>Drop Here</p>
            <%# link_to "Available", new_tic_tac_toe_game_tic_tac_toe_move_path(@game, move: x) %>
         </div>
         </td>
       <% else %>
-          <td class="Available">Not Available
+          <td class="Available" placeholder="Not Available">
           </td>
       <% end %>
     <% end %>
